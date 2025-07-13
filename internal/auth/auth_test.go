@@ -26,13 +26,18 @@ func TestGetApiKey(t *testing.T) {
 		},
 		"valid authorization header": {
 			input: map[string][]string{"Authorization": {"ApiKey FakeApiKey"}},
-			want:  result{apiKey: "ApiKey", err: nil},
+			want:  result{apiKey: "FakeApiKey", err: nil},
 		},
 	}
 
 	for name, tc := range tests {
 		res, err := GetAPIKey(tc.input)
-		if res != tc.want.apiKey || !errors.Is(err, tc.want.err) {
+		errorMatches := tc.want.err == err
+
+		if tc.want.err != nil && err != nil {
+			errorMatches = tc.want.err.Error() == err.Error()
+		}
+		if res != tc.want.apiKey || !errorMatches {
 			t.Fatalf("%s: expected %#v, got %#v", name, tc.want, result{apiKey: res, err: err})
 		}
 	}
