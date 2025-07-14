@@ -1,3 +1,5 @@
+![CI Workflow](https://github.com/Reza1878/learn-cicd-starter/actions/workflows/ci.yml/badge.svg)
+
 # learn-cicd-starter (Notely)
 
 This repo contains the starter code for the "Notely" application for the "Learn CICD" course on [Boot.dev](https://boot.dev).
@@ -17,8 +19,6 @@ Run the server:
 ```bash
 go build -o notely && ./notely
 ```
-
-![CI Workflow](https://github.com/Reza1878/learn-cicd-starter/actions/workflows/ci.yml/badge.svg)
 
 _This starts the server in non-database mode._ It will serve a simple webpage at `http://localhost:8080`.
 
